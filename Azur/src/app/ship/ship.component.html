@@ -1,0 +1,40 @@
+<p-pickList
+    [source]="ships"
+    [target]="shipsOnFleet"
+    sourceHeader="Available"
+    targetHeader="Selected"
+    [dragdrop]="true"
+    [responsive]="true"
+    [sourceStyle]="{ height: '30rem' }"
+    [targetStyle]="{ height: '30rem' }"
+    filterBy="name"
+    sourceFilterPlaceholder="Search by name"
+    targetFilterPlaceholder="Search by name"
+>
+    <ng-template let-ship pTemplate="item">
+        <div class="ship-item">
+            <div class="image-container">
+                <img
+                    src="assets/showcase/images/demo/ship/{{ ship.image }}"
+                    [alt]="ship.name"
+                    class="ship-image"
+                />
+            </div>
+            <div class="ship-list-detail">
+                <h5 class="mb-2">{{ ship.name }}</h5>
+                <i class="pi pi-tag ship-category-icon"></i>
+                <span class="ship-category">{{ ship.category }}</span>
+            </div>
+            <div class="ship-list-action">
+                <h6 class="mb-2">${{ ship.price }}</h6>
+                <span
+                    [class]="
+                        'ship-badge status-' +
+                        ship.inventoryStatus.toLowerCase()
+                    "
+                    >{{ ship.inventoryStatus }}</span
+                >
+            </div>
+        </div>
+    </ng-template>
+</p-pickList>
